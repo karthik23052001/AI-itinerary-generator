@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI itinerary Generator</title>
+
+    <!-- Preconnect to required origins -->
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- Share Button css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='share.css' ) }}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- This code block includes links to Bootstrap CSS and Bootstrap Icons CSS. -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- This code block includes a link to the favicon. -->
+    <link rel="icon" href="{{ url_for('static',filename='logo.svg') }}" />
+
+    <style>
+      .alert {
+        transition: opacity 1s; /* You can adjust the duration as needed */
+      }
+      main {
+        margin-top: 100px;
+        margin-bottom: 120px;
+        overflow-x: overlay;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
+
+      .navbar-nav {
+        display: block;
+        flex-direction: row;
+        list-style: none;
+      }
+      .navbar-nav li {
+        padding: 0 10px;
+      }
+      .navbar-nav li a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .nav-item {
+        width: max-content;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          margin-top: 150px;
+        }
+
+        header {
+          font-size: 1rem;
+          padding: 1.5rem;
+          text-align: center;
+        }
+
+        header h1 {
+          font-size: 1.5rem;
+        }
+
+        header nav {
+          display: block;
+        }
+        .nav-item {
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Travel Itinerary Generator</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <!-- Removed Login and Signup links -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+  </body>
+</html>

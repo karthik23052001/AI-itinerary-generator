@@ -1,0 +1,166 @@
+{% extends "headers.html" %}
+{% block content %}
+<style>
+  body {
+    background: url('{{ url_for('static', filename='background.png') }}') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem 0; /* Add padding at the top and bottom */
+    color: #fff;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2rem;
+    margin: auto;
+  }
+
+  .form-control {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #000; /* Set input text color to black */
+  }
+
+  .form-control::placeholder {
+    color: #000; /* Set placeholder text color to black */
+  }
+
+  .form-control:focus {
+    background: rgba(255, 255, 255, 0.25);
+    color: #000; /* Ensure input text remains black on focus */
+    box-shadow: none;
+    border: none;
+  }
+
+  .input-group-text {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+  }
+
+  label {
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    background: #2575fc;
+    border: none;
+    transition: background 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: #6a11cb;
+  }
+
+  .alert-info {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
+  }
+
+  header, footer {
+    background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+    color: #fff;
+  }
+</style>
+
+<main class="container d-flex justify-content-center">
+  <div class="card col-md-6">
+    <h2 class="text-center mb-4">Itinerary Generator</h2>
+    <form action="/" method="POST" novalidate>
+      <div class="mb-3">
+        <label for="source" class="form-label">From:</label>
+        <div class="alert alert-info" role="alert">
+          Please enter the location in the format: City, State, Country.
+        </div>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa fa-map-marker-alt"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="source"
+            id="source"
+            placeholder="Enter your boarding point"
+            required
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="destination" class="form-label">To:</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa fa-map-marker-alt"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="destination"
+            id="destination"
+            placeholder="Enter your destination"
+            required
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-3">
+          <label for="date" class="form-label">Travel Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            name="date"
+            id="date"
+            required
+          />
+        </div>
+        <div class="col mb-3">
+          <label for="return" class="form-label">Return Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            name="return"
+            id="return"
+            required
+          />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+      <div class="text-center mt-3">
+        <img
+          id="loading"
+          style="display: none; width: 50px;"
+          src="{{ url_for('static', filename='loading.gif') }}"
+          alt="Loading..."
+        />
+      </div>
+    </form>
+  </div>
+</main>
+
+<footer class="jumbotron text-center text-white fixed-bottom">
+  <div class="text-center p-3">
+    <p>&copy; {{ now.year }} Copyright</p>
+  </div>
+</footer>
+
+<script>
+  setTimeout(function () {
+    const alerts = document.querySelectorAll(".alert");
+    alerts.forEach(function (alert) {
+      alert.style.opacity = 0;
+    });
+    setTimeout(function () {
+      alerts.forEach(function (alert) {
+        alert.style.display = "none";
+      });
+    }, 1000);
+  }, 5000);
+
+  document.querySelector("form").addEventListener("submit", function () {
+    document.getElementById("loading").style.display = "block";
+  });
+</script>
+{% endblock %}
