@@ -1,0 +1,41 @@
+**FRONTEND:**
+- HTML (Jinja2 templating)
+- CSS
+
+**BACKEND:**
+- Python
+- Flask (version 3.1.0)
+- Requests library
+- Flask-Sitemapper
+- python-dotenv
+- Gunicorn
+
+
+**LANGUAGES:**
+- Python (backend)
+- HTML/CSS (frontend)
+
+Other:
+- The project uses Jinja2 templates for rendering dynamic content on the frontend.
+- The backend serves the frontend templates and handles business logic, user sessions, and API interactions.
+
+This setup provides a full-stack web application with Python Flask backend and HTML/CSS frontend.
+
+**FUNCTIONAL REQUIREMENTS:**
+
+- The system shall allow users to input travel details including source, destination, start date, and end date.
+- The system shall generate a travel itinerary based on the user inputs using an AI-based itinerary generator.
+- The system shall retrieve and display weather data for the destination and travel dates.
+- The system shall render the generated itinerary and weather data on a dashboard page.
+- The system shall provide informational pages such as About and Contact.
+- The system shall handle user sessions to maintain state during interactions.
+- The system shall provide error handling and user feedback for invalid inputs or system errors.
+
+**NON-FUNCTIONAL REQUIREMENTS:**
+
+The system shall ensure secure communication and content delivery by implementing Content Security Policy (CSP) headers.
+The system shall provide a responsive and user-friendly interface accessible via modern web browsers.
+The system shall maintain performance to respond to user requests within acceptable time frames.
+The system shall be maintainable and extensible, using modular code structure and standard frameworks.
+The system shall log errors and exceptions for debugging and monitoring purposes.
+The system shall be deployable on standard web servers using WSGI (e.g., Gunicorn).
